@@ -1,0 +1,18 @@
+                <section data-background="#00a2a1" class="green_bg">
+                	<section>
+                        <h2><img src="images/icon_task.png" class="slide_icon" alt="icon"> Task: Node recovery</h2>
+                        <p>1. Join your ucp-node0 and ucp-node1 nodes to the controller</p>
+                        <p>2. Run three containers of your choice and take note of which nodes they are scheduled on</p>
+                        <p>3. Between node0 and node1, SSH into the node that has more containers running</p>
+                        <p>4. Stop the ucp-swarm-join container and wait a few minutes. Then refresh open the Nodes page in UCP. What do you notice?</p>
+                        <p>5. Open the Containers page in UCP. What do you notice?</p>
+                    </section>
+                    <section> 
+                        <p>6. Start the ucp-swarm-join container and refresh your Nodes page to find the node again. Then check your containers on the node. Notice they are still running</p>
+                        <p>7. Run a new container and set the restart policy on it to "always"</p>
+                        <p>8. Take note of which node the container is on. SSH into that node and reboot it.</br><code>$ sudo reboot</code></p>
+                        <p>9. Wait a few minutes until the node has rebooted.</p>
+                        <p>10. Go into the containers page and check the containers on the node. Which container is still running after the reboot and which one has stopped?</p>
+                    </section>
+				</section>
+                

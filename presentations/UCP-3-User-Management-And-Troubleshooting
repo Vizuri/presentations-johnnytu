@@ -1,0 +1,14 @@
+# Docker Datacenter Training Series 3: User Management and Troubleshooting
+
+welcome-module-user-management-and-troubleshooting
+task-create-users-and-teams
+lecture-user-management
+task-test-user-access
+lecture-ucp-access-control
+task-advanced-user-management
+task-user-management-with-ldap
+task-troubleshooting-lab-password-recovery
+task-troubleshooting-lab-user-access
+lecture-monitoring-and-recovery-of-ucp-and-applications
+task-node-recovery
+ending-module-user-management-and-troubleshooting-ucp

@@ -1,13 +1,15 @@
-				<section data-background="#173432">
-					<h2><span class="accent_text_color">Mini-lecture:</span> Docker Trusted Registry</h2>
+
+
+                <section data-background="#445d6e" class="gray_bg">
+					<h2><img src="images/icon_lecture.png" class="slide_icon" alt="icon">Mini-lecture: <br>Docker Trusted Registry</h2>
 				</section>
                 
-                <section>
-                    <section>
+                <section data-background="#445d6e" class="gray_bg">
+                    <section data-background="#445d6e" class="gray_bg">
                         <h2>What is Docker Trusted Registry?</h2>
                         <p>Docker Trusted Registry (DTR) is a registry server that you can run securely on your own infrastructure</p>
                     </section>
-                    <section>
+                    <section data-background="#445d6e" class="gray_bg">
                         <h2>What features does DTR include?</h2>
 						<ul>
 							<li>Image registry to store images</li>
@@ -21,19 +23,17 @@
                         <aside class="notes">Speaker Notes: The following features differentiate DTR from Docker Hub, the normal registry server: Web based GUI for admin configuration, Easy and transparent upgrades, Built in system usage metrics dashboard, logging, and built in support for basic and LDAP authentication</aside>
                     </section>
 					
-					<section>
+					<section data-background="#445d6e" class="gray_bg">
 						<h2>DTR Architecture</h2>
 						<p>
-						<img src="images/dtr.PNG"/>
+						<img src="images/dtr.PNG" alt="dtr"/>
 						</p>
 					</section>
-                </section>
-			
-				
+                </section>		
                 
-                <section>
-                	<section>
-                        <h2>DTR Primary Usage Scenarios</h2><br>
+                <section data-background="#445d6e" class="gray_bg">
+                	<section data-background="#445d6e" class="gray_bg">
+                        <h2>DTR Primary Usage Scenarios</h2>
                         <h3 class="accent_text_color">CI/CD with Docker:</h3>
 						<ul>
 							<li>Centrally located base images</li>
@@ -51,7 +51,7 @@
 						</aside>
                     </section>
 					
-                    <section>
+                    <section data-background="#445d6e" class="gray_bg">
                         <h3 class="accent_text_color">Containers-as-a-Service:</h3>
 						<ul>
 							<li>With Docker UCP</li>
@@ -66,9 +66,8 @@
 					</section>
                 
 				</section>
-
                 
-                <section>
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>DTR Installation Requirements</h2>
 					<ul>
 						<li>DTR license</li>
@@ -76,48 +75,44 @@
 						<li>CS Engine only supported on RHEL v7.0, 7.1 or Ubuntu 14.04 LTS</li>
 						<li>Download the RPM or DEB package from your Enterprise License page in Docker Hub and then copy it into your host machine</li>
 					</ul>
-				</section>
+				</section>          
                 
-                
-                <section>
-                	<section>
+                <section data-background="#445d6e" class="gray_bg">
+                	<section data-background="#445d6e" class="gray_bg">
 						<h2>Public vs Private Repositories</h2>
                     </section>
-                    <section>
+                    <section data-background="#445d6e" class="gray_bg">
                         <h3 class="accent_text_color">Public repositories created under a user account are openly available</h3>
 						<ul>
 							<li>Can pull images without authentication, even when managed authentication is enabled</li>
 							<li>Still need to login to push images</li>
 						</ul>
                     </section>
-                    <section>
+                    <section data-background="#445d6e" class="gray_bg">
                         <h3 class="accent_text_color">Private repositories created under a user account can only be accessed by:</h3>
 						<ul>
 							<li>The user who created the repo</li>
 							<li>Any user with a global role</li>
 						</ul>
                     </section>
-				</section>
-               
+				</section>             
                 
-                
-                <section>
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Garbage Collection and Image Deletion</h2>
-                    <div class="table_cell"><span class="accent_text_color">Soft Image Delete =</span> Remove from UI but still on disk</div>
-                    <div class="table_cell"><span class="accent_text_color">Hard image Delete =</span> Remove unused layers via garbage collection</div>
-				</section>
+                    <div class="cell"><p>Soft Image Delete <span style="color: #00CBCA !important;">= Remove from UI but still on disk</span></p></div>
+                    <div class="cell"><p>Hard image Delete <span style="color: #00CBCA !important;">= Remove unused layers via garbage collection</span></p></div>
+				</section>                
                 
-                
-                <section>
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>LDAP authentication</h2>
 					<ul>
 						<li>Connect to LDAP server for authentication</li>
 						<li>Usernames and passwords will be based on what is configured on the LDAP server</li>
-						<li>Your LDAP server may have thousands of users</li>
+						<li style="padding-top: 10px;">Your LDAP server may have thousands of users</li>
 							<ul>
 								<li>Do all of them need access?</li>
 							</ul>
-						<li>Filter for DTR registry users and DTR administrators</li>
+						<li style="padding-top: 10px;">Filter for DTR registry users and DTR administrators</li>
 					</ul>
                     <aside class="notes">Speaker Notes:  Demo:  Instructor demo: Highlight the config page and explain each field if you think it is necessary. You don’t have to go into detail on each field because generally only 1 or 2 people in an enterprise worry about the details and this is something that is done once and left alone. </aside>
 				</section>

@@ -1,0 +1,131 @@
+                <section data-background="#445d6e" class="gray_bg">
+					<h2><img src="images/icon_lecture.png" class="slide_icon" alt="icon"> Mini lecture - Monitoring and Recovery of UCP and applications</h2>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Monitoring applications</h2>
+                    <ul>
+                    	<li>Understand the containers involved in each application and their function</li>
+                    	<li>Container details tab tells us important information about the configuration of the container</li>
+                    	<li style="margin-top: 10px;">Can check container logs from the GUI</li>
+                        	<ul>
+                                <li>Equivalent of running <code>docker logs</code></li>
+                            </ul>
+                    	<li style="margin-top: 10px;">"Stats" tab shows CPU and memory usage along with network traffic</li>
+                    	<li>"Console" tab provides console access</li>
+                    </ul>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Container logs</h2> 
+                    <img src="images/container_logs.png" alt="add label" style="width: 912px !important; max-width: 100%;">
+                </section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Container stats</h2> 
+                    <img src="images/container_stats.png" alt="add label" style="width: 700px !important; max-width: 100%;">
+                </section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Dashboard statistics</h2>
+                    <ul>
+                    	<li>Combined CPU and Memory usage and capacity from all nodes are displayed</li>
+                    	<li>CPU and memory is based on how much is reserved for various containers, not actual real time usage</li>
+                    	<li>Will only be updated if containers are run with the Memory shares or CPU shares options configured</li>
+                    </ul>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Container config</h2> 
+                    <img src="images/container_config.png" alt="add label" style="width: 800px !important; max-width: 100%;">
+                </section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Monitoring UCP</h2>
+                    <ul>
+                    	<li>UCP container logs</li>
+                    	<li>Error message can often be found on the <code>ucp-controller</code> log</li>
+                    	<li>Log messages can be sent to syslog server</li>
+                    </ul>
+                    <img src="images/monitoring_ucp.png" alt="monitoring ucp">
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Node recovery</h2>
+                    <ul>
+                    	<li>All containers on a failed node stop running</li>
+                    	<li>Containers cannot be transferred to other nodes in the cluster</li>
+                    	<li>Try to restart the node</li>
+                    	<li style="margin-top: 10px;">Check Swarm containers:</li>
+                        <ul>
+                        	<li>If Swarm join container is not running, restart it</li>
+                            <li>If that does not work, uninstall and reinstall UCP for that node only</li>
+                        </ul>
+                        <li style="margin-top: 10px;">On Node restart, containers that were previously running need to be manually restarted</li>
+                        <ul>
+                        	<li>Can set restart policy on containers</li>
+                        </ul>
+                    </ul>
+				</section>
+                
+                <!--
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Controller recovery</h2>
+                    <ul>
+                    	<li>Restart ucp-controller container</li>
+                        <li style="margin-top: 10px;">Even with HA setup, restart your main controller ASAP</li>
+                        <ul>
+                        	<li>CA certs are only stored on the main controller</li>
+                        </ul>
+                    </ul>
+				</section>
+                -->
+                
+                <section data-background="#445d6e" class="gray_bg">
+                	<section>
+                        <div class="half_container_one">
+                        <h2>Common problems</h2> 
+                            <ul>
+                                <li><b>X509 certificate signed by unknown authority when using client bundle</b></li>
+                                    <ul>
+                                        <li>Usually indicates incorrect SAN configuration on UCP install</li>
+                                        <li>Check certificate on your browser to find the SAN values</li>
+                                        <li>Change <code>DOCKER_HOST</code> variable to use a supported SAN value on your certificate</li>
+                                    </ul>
+                            </ul>
+                        </div>
+                        
+                        <div class="half_container_two" style="text-align: right;"><img src="images/common_problems.png" style="max-width: 90%;" alt="common problems"></div>
+					</section>
+                    
+                    <section>
+                    	<ul>
+                            <li style="margin-top: 10px;"><b>500 Internal Server Error: failed to parse pool request for address space "GlobalDefault" pool ... </b></li>
+                                <ul>
+                                    <li>Occurs when trying to create an overlay network when nodes have not been registered with <code>etcd</code></li>
+                                    <li>Multi host networking not setup or setup incorrectly</li>
+                                    <li>Check configuration on each node at <code>/etc/docker/daemon.json</code></li>
+                                    <li>Check <code>ucp-controller</code> logs for error messages concerning the cluster</li>
+                             </ul>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <ul>
+                            <li style="margin-top: 10px;"><b>409 Conflict: subnet sandbox join failed for "": overlay subnet has conflicts in the host while running in host mode</b></li>
+                                <ul>
+                                    <li>Subnet conflicts with existing subnet on the host</li>
+                                    <li>Tends to occur on Amazon EC2 nodes</li>
+                                    <li><b>Solution:</b> create the network with a manually defined subnet</li>
+                                    <li><b>Solution:</b> Upgrade Linux kernel to 3.19+</li>
+                                </ul>
+                        </ul>
+                    </section>
+                </section>

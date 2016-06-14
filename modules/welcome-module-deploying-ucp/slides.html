@@ -6,8 +6,8 @@
 				</section>
                 -->
 				
-            	<section>
-					<h2><span class="accent_text_color">Docker CaaS Training Series 1:</span> Deploying UCP for Evaluation and in Production</h2>
+            	<section data-background="images/title_slide.jpg" class="blue_bg">
+					<!--<h2><span class="accent_text_color">Docker CaaS Training Series 1:</span> Deploying UCP for Evaluation and in Production</h2>-->
 					<aside class="notes">Speaker Notes: In this first course in the Docker CaaS training series you will learn the basics of Docker UCP by:
 					<li>Installing DUCP in a local environment</li>
 					<li>Installing DUCP for a production environment</li>
@@ -15,32 +15,59 @@
 					</aside>
 				</section>
 				
-				<section>
-					<h2>Intro to Instructor</h2>   
-                    <p>Add instructor information and pic here</p>
+				<!--
+				<section data-background="#1AAAF8" class="blue_bg">
+					<section data-background="#1AAAF8" class="blue_bg">
+						<h2>Intro to Instructor</h2>   
+						<p>Johnny Tu</p>
+						<p>
+							<img src="images/profile.JPG"/>
+						</p>
+					</section>
+					
+					<section data-background="#1AAAF8" class="blue_bg">
+						<h2>Instructor Info</h2>
+						<ul>
+							<li>6+ years as software instructor / curriculum developer</li>
+							<li>Support Engineer and Consultant</li>
+							<li>Atlassian JIRA, Confluence, Bamboo, Bitbucket</li>
+							<li>Zendesk, GoodData, NGINX</li>
+						</ul>
+					</section>
+				</section>
+				-->
+				
+				<section data-background="#1AAAF8" class="blue_bg">
+					<section data-background="#1AAAF8" class="blue_bg">
+						<h2>Intro to Instructor</h2>   
+						<p>Put your instructor bio here</p>
+
+					</section>
 				</section>
                 
-                <section>
-					<h2>A Note on Pedagogy</h2>   
-                    <li>Docker believes in learning by doing, with support.</li>              
-                    <aside class="notes">Speaker Notes: In this course you will be challenged to complete a series of learning tasks upfront, but will be supported by content and the help from the instructor.  You may listen to a mini-lecture that will supplement the task, but emphasis will be completing the tasks.  You will be able to see how much you've learned through taking our pre and post assessments.</aside><br>
-                    <p><img src="images/4cid.png"></p><br>
-                    <li>Passing the course: 70+ on final assessment.</li>
+                <section data-background="#1AAAF8" class="blue_bg">
+					<h2>A Note on Pedagogy</h2>
+                    <ul>
+                        <li>Docker believes in learning by doing, with support.</li>   
+                        <li>Passing the course: 70+ on final assessment.</li>
+                    </ul>		
+					<img src="images/4cid.png" style="background: none !important; width: 60%;">				
+                    <aside class="notes">Speaker Notes: In this course you will be challenged to complete a series of learning tasks upfront, but will be supported by content and the help from the instructor.  You may listen to a mini-lecture that will supplement the task, but emphasis will be completing the tasks.  You will be able to see how much you've learned through taking our pre and post assessments.</aside>
 				</section>
 				
-				<section>
+				<section data-background="#1AAAF8" class="blue_bg">
 					<h2>Session Logistics</h2>
 					<ul>
 					<li>4 hours duration</li>
 					<li>80% lab exercises, 20% lecture</li>
 					<li>Short break every hour</li>
-					<li><b>GoToTraining Audio Options</b>
+					<li style="padding-top: 10px;"><b>GoToTraining Audio Options</b>
 						<ul>
 						<li>Phone conference - number is displayed on GTT application</li>
 						<li>Mic and Speakers - Please use headset</li>
 						</ul>
 					</li>
-					<li><b>Ask questions at anytime</b>
+					<li style="padding-top: 10px;"><b>Ask questions at anytime</b>
 						<ul>
 						<li>Unmute yourself and ask</li>
 						<li>Post in chat window</li>
@@ -49,13 +76,13 @@
 					</ul>
 				</section>
 				
-				<section>
+				<section data-background="#1AAAF8" class="blue_bg">
 					<h2>Assumed Knowledge and Requirements</h2>
 					<ul>
 					<li>Recommended viewing <a href="http://training.docker.com/self-paced-training">http://training.docker.com/self-paced-training</a></li>
 					<li>Familiarity with using the Linux command line</li>
 					<li><a href="https://www.docker.com/products/docker-toolbox">Docker Toolbox</a> installed on your PC or Mac</li>
-					<li>You should know the basics of Docker
+					<li style="padding-top: 10px;">You should know the basics of Docker
 						<ul>
 						<li>Run a Docker container</li>
 						<li>Search for and pull images from Docker Hub</li>
@@ -65,7 +92,7 @@
 					</ul>
 				</section>
 				
-				<section>
+				<section data-background="#1AAAF8" class="blue_bg">
 					<h2>Your lab environment</h2>
 					<ul>
 					<li>You have been given three AWS instances 
@@ -75,99 +102,85 @@
 						<li>ucp-node-1</li>
 						</ul>
 					</li>
-					<li>Instances will be used for lab exercises</li>
+					<li style="padding-top: 10px;">Instances will be used for lab exercises</li>
 					<li>Credentials and access key have been emailed</li>
 					</ul>
 				</section>
 					
-                <section>					  
-                    <section>
+                <section data-background="#1AAAF8" class="blue_bg">
                     <h2>Agenda</h2>
 					<ul>
                     <li>Introduction</li>
                     <li>Pre-assessment</li>
                     <li>Docker Primer + Access Course Content</li>
-					</ul>
-                    </section>
-					
-                    <section>
-					<ul>
-                    <li><span class="accent_text_color">Mini-Lecture:</span> Docker Architecture and Components</li>
-                    <li><span class="accent_text_color">Task:</span> Deploying DUCP as a Sandbox</li>
+                    <li><b>Mini-Lecture:</b> Docker Architecture and Components</li>
+                    <li><b>Task:</b> Deploying UCP for Production</li>
                     <aside class="notes">Notes: This includes installing a local instance, deploying a Second Docker Host, and creating a container.</aside>
-                    <li><span class="accent_text_color">Mini-lecture:</span> Intro Docker Ops and Docker Datacenter</li>
-                    <li><span class="accent_text_color">Task:</span> Deploying DUCP in a Production Environment</li>
+                    <li><b>Mini-lecture:</b> Intro Docker Ops and Docker Datacenter</li>
+                    <li><b>Task:</b> Install Docker Trusted Registry </li>
                     <aside class="notes">Notes: Same as above except a different environment, networking, RBAC, Certifications, and through CLI, HA.  Ends with an Upgrade</aside>
-                    <li><span class="accent_text_color">Task:</span> Integrate with DTR</li>
-                    <li><span class="accent_text_color">Mini-lecture:</span> Docker Trusted Registry</li>
-					</ul>
-                    </section>
-					
-                    <section>
-					<ul>
+                    <li><b>Task:</b> Integrate UCP with DTR</li>
+                    <li><b>Mini-lecture:</b> Docker Trusted Registry</li>
                     <li>Post-assessment</li>
                     <li>Next Steps</li>
 					</ul>
-                    </section>
 				</section>
                 
-                <section>
+                <section data-background="#1AAAF8" class="blue_bg">
 					<h2>Pre-assessment</h2>   
-                    <p><a href="https://github.com/hakimel/reveal.js#api">Trueability</a></p>
+                    <p>Go to <a href="https://trueability.com">https://trueability.com</a></p>
+					<ul>
+						<li>Click on Redeem Invite</li>
+						<li>Sign up for an account or login to your existing account</li>
+						<li>Use your assessment code to redeem an assessment</li>
+					</ul>
+					<p><b>Note: </b>Instructor will provide assessment code</p>
 				</section>
                 
-                <section>                
-                    <section>
+             
+                <section data-background="#1AAAF8" class="blue_bg">
                         <h2>Get your course content</h2>   
                         <ul>
-						<li>Slides run on <a href="http://lab.hakim.se/reveal-js">Reveal JS</a></li>
-						<li>We have Dockerized the presentation</li>
-						<li>Run your own Reveal.js container to display the presentation locally</li>
-                    </section>     
-					
-                    <section data-markdown>
-					<script type="text/template">
-						## Using Docker Toolbox
-						- Open your Docker Quickstart Terminal
-						- Run the following:   
-						
-						```
-						$ docker pull training/docker-present
-						
-						$ docker run -ti --rm -v /var/run/docker.sock:/var/run/docker.sock training/docker-present
-  
-						```
-					</script>
-					</section>                
-                </section>
+                            <li>Slides run on <a href="http://lab.hakim.se/reveal-js">Reveal JS</a></li>
+                            <li>We have Dockerized the presentation</li>
+                            <li>Run your own Reveal.js container to display the presentation locally</li>
+                        </ul>
+					<pre>
+docker run -ti --rm -v /var/run/docker.sock:/var/run/docker.sock training/docker-present -p 8080</pre>
+                </section>     
+
                 
-                <section>
+                <section data-background="#1AAAF8" class="blue_bg">
 					<h2>You just learned Docker basics!</h2>
                     <div class="half_container_one">
-                        <div class="table_cell">Containers <span class="accent_text_color">✓</span></div>
-                        <div class="table_cell">Images <span class="accent_text_color">✓</span></div>
-                        <div class="table_cell">Pull/Run <span class="accent_text_color">✓</span></div>
+                        <div class="cell"><p>Containers</p><img src="/images/check_mark.png" class="check_mark" alt="check mark"></div>
+                        <div class="cell"><p>Images</p><img src="/images/check_mark.png" class="check_mark" alt="check mark"></div>
+                        <div class="cell"><p>Pull/Run</p><img src="/images/check_mark.png" class="check_mark" alt="check mark"></div>
                     </div>
                     <div class="half_container_two">
-                        <div class="table_cell">Ports <span class="accent_text_color">✓</span></div>
-                        <div class="table_cell">Browse <span class="accent_text_color">✓</span></div>
+                        <div class="cell"><p>Ports</p><img src="images/check_mark.png" class="check_mark" alt="check mark"></div>
+                        <div class="cell"><p>Browse</p><img src="images/check_mark.png" class="check_mark" alt="check mark"></div>
                     </div>
                     <aside class="notes">Speaker Notes:  To download a pdf version of this presentation you must use Chrome as your browser.</aside>
 				</section>
                 
-                <section>
-                	<section>
+                <section data-background="#1AAAF8" class="blue_bg">
+                	<section data-background="#1AAAF8" class="blue_bg">
 						<h2>Containers and Images</h2>
                     </section>
-                    <section>
+                    <section data-background="#1AAAF8" class="blue_bg">
                     	<h3 class="accent_text_color">Containers</h3>
+                        <ul>
                         <li>Isolated application platform</li>
                         <li>Contains everything needed to run your application</li>
                         <li>Based on one or more images</li>
+                        </ul><br><br>
                     	<h3 class="accent_text_color">Images</h3>
+                        <ul>
                         <li>Read only template used to create containers</li>
                         <li>Built by you or other Docker users</li>
                         <li>Stored in Docker Hub, Docker Trusted Registry or your own Registry</li>
+                        </ul>
                     
                     <aside class="notes">
                     	<h3 class="accent_text_color">Speaker Notes:</h3>
@@ -175,12 +188,12 @@
                         <li>Each root file system is called a container</li>
                         <li>Each container also has its own</li>
                         <div class="half_container_one">
-                            <div class="table_cell">Processes</div>
-                            <div class="table_cell">Memory</div>
+                            <div class="cell">Processes</div>
+                            <div class="cell">Memory</div>
                         </div>
                         <div class="half_container_two">
-                            <div class="table_cell">Devices</div>
-                            <div class="table_cell">Network stack</div>
+                            <div class="cell">Devices</div>
+                            <div class="cell">Network stack</div>
                         </div>
 					</aside>
                     </section>

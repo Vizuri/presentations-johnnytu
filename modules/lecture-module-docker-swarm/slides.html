@@ -1,96 +1,134 @@
-				<section data-background="#173432">
-					<h2><span class="accent_text_color">Mini Lecture:</span> Docker Swarm</h2>
+                <section data-background="#445d6e" class="gray_bg">
+					<h2><img src="images/icon_lecture.png" class="slide_icon" alt="icon"> Mini Lecture: Docker Swarm</h2>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>What is Docker Swarm</h2>
-					<li>Native tool that clusters Docker hosts and schedules containers on them</li>
-					<li>Allows us to distribute container workloads</li>
-					<li>Serves the standard Docker API</li>
-					<li>Ships with simple scheduling and discovery backend</li>
+                    <ul>
+                        <li>Native tool that clusters Docker hosts and schedules containers on them</li>
+                        <li>Allows us to distribute container workloads</li>
+                        <li>Serves the standard Docker API</li>
+                        <li>Ships with simple scheduling and discovery backend</li>
+                    </ul>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>How Swarm works</h2>
 					<p><img src="images/Swarm diagram.PNG"></p>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Discovery backends</h2>                   
-					<div class="table_cell">Hosted discovery</div>                    
+					<div class="cell"><p>Hosted discovery</p></div>                    
                     <div style="width: 100%; overflow: hidden;">
-                    <div class="third_container_one"><div class="table_cell" style="overflow: hidden; height: 150px;"><img src="images/etcd.png" style="border: none; background: none; box-shadow: none;"></div></div>
-                    <div class="third_container_two"><div class="table_cell" style="overflow: hidden; height: 150px;"><img src="images/consul.png" style="border: none; background: none; box-shadow: none;"></div></div>
-                    <div class="third_container_three"><div class="table_cell" style="overflow: hidden; height: 150px;"><img src="images/zookeeper.png" style="border: none; background: none; box-shadow: none;"></div></div>
+                    <div class="third_container_one"><div class="cell" style="overflow: hidden; height: 130px; padding-top: 10px !important;"><img src="images/etcd.png" style="border: none; background: none; box-shadow: none; padding-top: 5px;"></div></div>
+                    <div class="third_container_two"><div class="cell" style="overflow: hidden; height: 130px; padding-top: 10px !important;"><img src="images/consul.png" style="border: none; background: none; box-shadow: none;"></div></div>
+                    <div class="third_container_three"><div class="cell" style="overflow: hidden; height: 130px; padding-top: 10px !important;"><img src="images/zookeeper.png" style="border: none; background: none; box-shadow: none;"></div></div>
                     </div>
-					<div class="table_cell">Static files</div>                   
+					<div class="cell"><p>Static files</p></div>                   
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Swarm and UCP</h2>
-					<li>UCP runs on Swarm</li>
-					<li>Acts as a GUI for Swarm so you don’t have to use commands to run containers</li>
-					<li>Adds user management capabilities</li>
-					<li>Easy way to monitor containers in your cluster and troubleshoot for potential problems</li>
-					<li>Provides authentication and security such as TLS and access control</li>
+                    <ul>
+                        <li>UCP runs on Swarm</li>
+                        <li>Acts as a GUI for Swarm so you don’t have to use commands to run containers</li>
+                        <li>Adds user management capabilities</li>
+                        <li>Easy way to monitor containers in your cluster and troubleshoot for potential problems</li>
+                        <li>Provides authentication and security such as TLS and access control</li>
+                    </ul>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>UCP containers</h2>
-					<li>Notice the Swarm container running the manage command</li>
-					<p>
-					<section data-markdown>
-						<script type="text/template">
-                        ```
-CONTAINER ID        IMAGE                         COMMAND                    PORTS                                                                             NAMES
-8ee33a41effa        docker/ucp-controller:1.0.0   "/bin/controller serv"     0.0.0.0:443->8080/tcp                                                             ucp-controller
-462461d4c23a        docker/ucp-cfssl:1.0.0        "/bin/cfssl serve -ad"     8888/tcp, 0.0.0.0:12381->12381/tcp                                                ucp-cluster-root-ca
-9522ab2ca46c        docker/ucp-cfssl:1.0.0        "/bin/cfssl serve -ad"     8888/tcp, 0.0.0.0:12382->12382/tcp                                                ucp-client-root-ca
-12fbc77d60b5        docker/ucp-swarm:1.0.0        "/swarm manage --tlsv"     0.0.0.0:2376->2375/tcp                                                            ucp-swarm-manager
-9e38456428e3        docker/ucp-swarm:1.0.0        "/swarm join --discov"     2375/tcp                                                                          ucp-swarm-join
-4350c7be8f66        docker/ucp-proxy:1.0.0        "/bin/run"                                                                                                   ucp-proxy
-e9f18dcb802a        docker/ucp-etcd:1.0.0         "/bin/etcd --data-dir"     2380/tcp, 4001/tcp, 7001/tcp, 0.0.0.0:12380->12380/tcp, 0.0.0.0:12379->2379/tcp   ucp-kv
-                        ```
-                        </script>
-					</section> 
-					</p>
+                    <ul>
+						<li>Notice the Swarm container running the manage command</li>
+                    </ul><br>
+<pre>CONTAINER ID		IMAGE					COMMAND                    
+8ee33a41effa		docker/ucp-controller:1.0.0		"/bin/controller serv" 
+462461d4c23a		docker/ucp-cfssl:1.0.0			"/bin/cfssl serve -ad"
+9522ab2ca46c		docker/ucp-cfssl:1.0.0			"/bin/cfssl serve -ad"
+12fbc77d60b5		docker/ucp-swarm:1.0.0			"/swarm manage --tlsv"
+9e38456428e3		docker/ucp-swarm:1.0.0			"/swarm join --discov"
+4350c7be8f66		docker/ucp-proxy:1.0.0			"/bin/run"            
+e9f18dcb802a		docker/ucp-etcd:1.0.0			"/bin/etcd --data-dir"
+
+
+PORTS                                                                               NAMES
+0.0.0.0:443->8080/tcp                                                               ucp-controller
+8888/tcp, 0.0.0.0:12381->12381/tcp                                                  ucp-cluster-root-ca
+8888/tcp, 0.0.0.0:12382->12382/tcp                                                  ucp-client-root-ca
+0.0.0.0:2376->2375/tcp                                                              ucp-swarm-manager
+2375/tcp                                                                            ucp-swarm-join
+                                                                                    ucp-proxy
+2380/tcp, 4001/tcp, 7001/tcp, 0.0.0.0:12380->12380/tcp, 0.0.0.0:12379->2379/tcp     ucp-kv </pre> 
+                    
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+                
                 	<section>
                         <h2>Scheduling containers in the cluster</h2>
-                        <li>How does Swarm decide which node your container runs on?</li>
-                        <li>The Docker Swarm scheduler ranks nodes based on a number of different strategies / algorithms</li>
-                        <li>When you run a container, Swarm will place it in the node with the highest rank</li>
-                        <li>How the rank is calculated depends on your selected strategy</li>
+                        <ul>
+                            <li>How does Swarm decide which node your container runs on?</li>
+                            <li>The Docker Swarm scheduler ranks nodes based on a number of different strategies / algorithms</li>
+                            <li>When you run a container, Swarm will place it in the node with the highest rank</li>
+                            <li>How the rank is calculated depends on your selected strategy</li>
+                        </ul>
                     </section>
                     
                     <section>
                         <h3>Two strategies</h3>
-                        <div class="half_container_one"><div class="table_cell">Spread</div></div>
-                        <div class="half_container_two"><div class="table_cell">Binpack</div></div>
+                        <div class="half_container_one"><div class="cell"><p>Spread</p></div></div>
+                        <div class="half_container_two"><div class="cell"><p>Binpack</p></div></div>
                     </section>
+                    
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Spread Strategy</h2>
-					<li>The spread strategy ranks nodes based on the number of containers</li>
-					<li>Swarm will schedule the container on the node that has the least number of containers running</li>
-					<li>If multiple nodes have the same least number of containers running, Swarm will pick one of those nodes at random</li>
-					<p>[insert animation diagram]</p>
+                    <ul>
+                        <li>The spread strategy ranks nodes based on the number of containers</li>
+                        <li>Swarm will schedule the container on the node that has the least number of containers running</li>
+                        <li>If multiple nodes have the same least number of containers running, Swarm will pick one of those nodes at random</li>
+                    </ul>
+					
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Binpack strategy</h2>
-					<li>When using the binpack strategy, Swarm will try to fit as many containers into a node as possible, before using another node</li>
-					<li>Optimizes for the container that is the most packed</li>
-					<li>Swarm will continue to schedule containers on the same node until there are insufficient resources (CPU, RAM) on that node</li>
-					<aside class="notes">Note: when using binpack you have to specify the memory and/or CPU allocation when running containers. Otherwise Swarm will pack every container into the one host regardless of its resources.</aside>
+                    <ul>
+                        <li>When using the binpack strategy, Swarm will try to fit as many containers into a node as possible, before using another node</li>
+                        <li>Optimizes for the container that is the most packed</li>
+                        <li>Swarm will continue to schedule containers on the same node until there are insufficient resources (CPU, RAM) on that node</li>
+                    </ul>
+					<aside class="notes">Note: when using binpack you have to specify the memory and/or CPU allocation when running containers. Otherwise Swarm will pack every container into the one host regardless of its resources.
+                    </aside>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>UCP scheduling</h2>
-					<li>Defaults to spread strategy</li>
-					<li>Option can be configured during the installation procedure</li>
-					<li>Cannot be changed on the fly</li>
+                    <ul>
+                        <li>Defaults to spread strategy</li>
+                        <li>Option can be configured during the installation procedure</li>
+                        <li>Cannot be changed on the fly</li>
+                    </ul>
 				</section>

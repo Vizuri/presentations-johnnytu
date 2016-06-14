@@ -6,7 +6,8 @@ task-module-deploy-an-nginx-container-on-ucp
 lecture-module-docker-swarm
 task-module-deploy-more-containers-on-ucp
 lecture-docker-compose
-task-deploy-simple-applications
-task-deploy-voting-app
+task-deploy-applications-with-gui
+task-deploy-applications-with-cli
 lecture-docker-networking
-task-deploy-voting-app-across-multiple-nodes
+task-deploy-multi-node-application
+ending-module-managing-container-services

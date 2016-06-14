@@ -1,0 +1,26 @@
+# Learning CaaS Operations - DockerCon 2016
+
+welcome-module-dockercon2016
+lecture-docker-architecture
+lecture-docker-intro-for-ops
+task-module-configure-ucp-environment
+task-module-deploy-an-nginx-container-on-ucp
+lecture-module-docker-swarm
+task-module-deploy-more-containers-on-ucp
+lecture-docker-compose
+task-deploy-applications-with-gui
+task-deploy-applications-with-cli
+lecture-docker-networking
+task-deploy-multi-node-application
+interlude-dockercon2016-postassessment
+task-create-users-and-teams
+lecture-user-management
+task-test-user-access
+lecture-ucp-access-control
+task-advanced-user-management
+task-user-management-with-ldap
+task-troubleshooting-lab-password-recovery
+task-troubleshooting-lab-user-access
+lecture-monitoring-and-recovery-of-ucp-and-applications
+task-node-recovery
+ending-module-dockercon2016

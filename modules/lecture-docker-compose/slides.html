@@ -1,150 +1,177 @@
-				<section data-background="#173432">
-					<h2><span class="accent_text_color">Mini Lecture:</span> Docker Compose</h2>
+                <section  data-background="#445d6e" class="gray_bg">
+					<h2><img src="images/icon_lecture.png" class="slide_icon" alt="icon"> Mini Lecture: Docker Compose</h2>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+                
                 	<section>
 						<h2>What is Compose</h2>
-                        <li>Tool for creating and managing multi container applications</li>
-                        <li>Containers are all defined in a single file called docker-compose.yml</li>
+                        <ul>
+                            <li>Tool for creating and managing multi container applications</li>
+                            <li>Containers are all defined in a single file called docker-compose.yml</li>
+                        </ul>
                     </section>
+                    
                     <section>
+                    <ul>
 						<li>Each container runs a particular component / service of your application. For example:<br><br></li>
-                    	<div class="half_container_one"><div class="table_cell">Web front end</div></div>
-                        <div class="half_container_two"><div class="table_cell">User authentication</div></div>
-                        <div class="half_container_one"><div class="table_cell">Payments</div></div>
-                        <div class="half_container_two"><div class="table_cell">Database</div></div>
+                    </ul>
+                    	<div class="half_container_one"><div class="cell"><p>Web front end</p></div></div>
+                        <div class="half_container_two"><div class="cell"><p>User authentication</p></div></div>
+                        <div class="half_container_one"><div class="cell"><p>Payments</p></div></div>
+                        <div class="half_container_two"><div class="cell"><p>Database</p></div></div>
                     </section>
+                    
                     <section>
-                    	<li>Container links are defined</li>
-                        <li>Compose will spin up all your containers in a single command</li>
+                    	<ul>
+                            <li>Container links are defined</li>
+                            <li>Compose will spin up all your containers in a single command</li>
+                        </ul>
                     </section>
+                    
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
                 	<section>
                         <h2>Background behind Docker Compose</h2>
-                        <li>Applications are moving away from the old monolithic structure</li>
+                        <ul>
+                        	<li>Applications are moving away from the old monolithic structure</li>
+                        </ul>
 					</section>
                     <section>
-                        <li>Weaknesses with monolithic structure</li><br>
-                        <div class="table_cell">Hard to upgrade each component individually. Have to upgrade the entire stack.</div>
-                        <div class="table_cell">Tied to a particular technology stack.</div>
-                        <div class="table_cell">If one component goes down, the entire application can go down. No one can visit your website</div>
-                        <div class="table_cell">Overloaded IDE</div>
-                        <div class="table_cell">Not ideal for scaling because you have to scale the entire stack</div>
+                    	<ul>
+                        	<li>Weaknesses with monolithic structure</li><br>
+                        </ul>
+                        <div class="cell"><p>Hard to upgrade each component individually. Have to upgrade the entire stack.</p></div>
+                        <div class="cell"><p>Tied to a particular technology stack.</p></div>
+                        <div class="cell"><p>If one component goes down, the entire application can go down. No one can visit your website</p></div>
+                        <div class="cell"><p>Overloaded IDE</p></div>
+                        <div class="cell"><p>Not ideal for scaling because you have to scale the entire stack</p></div>
                     </section>
                     <section>
-						<li>Micro service architecture is the new way of developing apps</li>
+                    	<ul>
+							<li>Micro service architecture is the new way of developing apps</li>
+                        </ul>
                     </section>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Monolithic architecture</h2>
-                    <p><img src="images/monolithic architecture.PNG"></p>
+                    <p><img src="images/monolithic architecture.PNG" alt="monolithic architecture"></p>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Micro service architecture</h2>
-                    <p><img src="images/Microservice architecture.PNG"></p>
+                    <p><img src="images/Microservice architecture.PNG" alt="Microservice architecture"></p>
 				</section>
                 
-                <section>
-                	<section>
-					<h2>Micro service advantages</h2>
-                    <li>Each service can be developed and upgraded independently</li>
-                    <li>Easier for developers to understand: <span class="accent_text_color">Only have to focus on their service</span></li>
-                    </section>
-                    <section>
-                    <li>If one service goes down, the application should still run, albeit with reduced functions</li>
-                    <li>Application is easier to troubleshoot</li>
-                    <li>The whole application does not have to be committed to one technology stack</li>
-                    </section>
-                    <section><aside class="notes">
-                    <h4>Micro service advantages</h4>
-                    <li>Instructor note: You might want to talk about the main principles of building microservices</li>
-                    <li>Each service should have one concern and only focus on that concern</li>
-                    <li>Services should be able to run independently of each other</li>
-                    <li>Each service component should be independently upgradable and replaceable</li>
-                    <li>Each service should be lightweight and quick to develop</li>
-                    <li>Services interact with each other by exposing an API</li>
-                    </aside></section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+                
+ 
+                        <h2>Micro service advantages</h2>
+                        <ul>
+                            <li>Each service can be developed and upgraded independently</li>
+                            <li>Easier for developers to understand: <span class="accent_text_color">Only have to focus on their service</span></li>
+                            <li>If one service goes down, the application should still run, albeit with reduced functions</li>
+                            <li>Application is easier to troubleshoot</li>
+                            <li>The whole application does not have to be committed to one technology stack</li>
+                        </ul>
+
+                        <aside class="notes">
+                        <h4>Micro service advantages</h4>
+                        <ul>
+                            <li>Instructor note: You might want to talk about the main principles of building microservices</li>
+                            <li>Each service should have one concern and only focus on that concern</li>
+                            <li>Services should be able to run independently of each other</li>
+                            <li>Each service component should be independently upgradable and replaceable</li>
+                            <li>Each service should be lightweight and quick to develop</li>
+                            <li>Services interact with each other by exposing an API</li>
+                        </ul>
+                        </aside>
+
+                    
 				</section>
                 
-                <section>
-                	<section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg"> 
+                              
                         <h2>Docker Compose and micro services</h2>
-                        <p><img src="images/Microservices and Containers.PNG"></p>
-                    </section>
-                    
-                    <section><aside class="notes">
-                        <h3>Speaker notes:</h3>
-                        <li>With a micro service architecture, you build your application as a collection of independent services which can function on their own. These services will talk to each other but the</li></aside>
-                    </section>
-                    
-                    <section><aside class="notes">
-                        <li>Main principle is that,</li><br>
-                        <div class="table_cell">Each service should have one concern and only focus on that concern. In this example, the Orders Service will place orders for items that customers buy.</div>
-                        <div class="table_cell">The Inventory service will look after item inventory.</div>
-                        <div class="table_cell">Other services for this application example could be payments, search, user authentication etc…</div></aside>
-                    </section>
-                    
-                    <section><aside class="notes">
-                        <li>Containers can be on same host or different hosts</li>
-                        <li>Use Compose to strap it all together and launch the app</li>
-                        <li>Swarm can be used to scale the containers. For example, you might scale order service so that there are 4 containers running it and it is load balanced</li>
-                    </aside></section>                   
+                        <p><img src="images/Microservices and Containers.PNG" alt="Microservices and Containers"></p>
+
+                    	<aside class="notes">
+                            <h3>Speaker notes:</h3>
+                            <ul>
+                                <li>With a micro service architecture, you build your application as a collection of independent services which can function on their own. These services will talk to each other but the</li>
+                                <li>Main principle is that,</li><br>
+                            <div class="table_cell">Each service should have one concern and only focus on that concern. In this example, the Orders Service will place orders for items that customers buy.</div>
+                            <div class="table_cell">The Inventory service will look after item inventory.</div>
+                            <div class="table_cell">Other services for this application example could be payments, search, user authentication etc…</div>
+                                <li>Containers can be on same host or different hosts</li>
+                                <li>Use Compose to strap it all together and launch the app</li>
+                                <li>Swarm can be used to scale the containers. For example, you might scale order service so that there are 4 containers running it and it is load balanced</li>
+                            </ul>
+                    	</aside>
+
+                                    
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+                
                 	<section>
                         <h2>The Compose YML file</h2>
-                        <li>Defines the services that make up your application</li>
-                        <li>Each service contains instructions for building and running a container</li>
-                        <li>V1 and V2 format</li>
-                    </section>
-                    
-                    <section>                
+                        <ul>
+                            <li>Defines the services that make up your application</li>
+                            <li>Each service contains instructions for building and running a container</li>
+                            <li>V1 and V2 format</li>
+                        </ul>
+                    </section>  
+                                   
                     <section>
-                        <h4>Example V1 format</h4>   
-                        <p>[insert with syntax highlighting]</p>
-                    </section>             
-                    <section data-markdown>
-						<script type="text/template">
-                        ```
-                        javaclient:                       
-                            build: .                                                
-                        command: java HelloWorld                                                
-                        links:                                               
-                        - redis                                               
-                        redis:						
-	image: redis
-                        ```
-                        </script>
-					</section>                
-                	</section>                
+                    	<h2>Example V1 format</h2>
+                    	<pre>
+javaclient:                       
+  build: .                                                
+  command: java HelloWorld                                                
+  links:                                               
+    - redis                                               
+redis:
+  image: redis
+                    	</pre>
+                    </section> 
+                                
 				</section>
                 
-                <section>                
-                    <section>
-                        <h2>YML file version 2 format</h2>   
-                        <p>[insert with syntax highlighting]</p>           
-                    <section data-markdown>
-						<script type="text/template">
-                        ```
-                        version: '2'                       
-                        services:                                              
-                        	javaclient:                                     
-                        	build: .                            
-                        redisdb:                      
-	image: redis
-                        ```
-                        </script>
-					</section>   
-                    </section>  
-                    <section>
-                    	<aside class="notes"><p>Speaker Notes: Version 2 is the new format in Docker Compose 1.6. However, version 1 format is still supported. You are still likely to encounter many compose files that are written in the v1 format.</p></aside>
-                    </section>             
+                
+                
+                <section data-background="#445d6e" class="gray_bg"> 
+                               
+					<h2>YML file version 2 format</h2>
+                    <pre>
+version: '2'                       
+
+services:                                              
+  javaclient:                                     
+    build: .                            
+  redisdb:
+    image: redis
+                    </pre>
+                           
+                    
+
+					<aside class="notes"><p>Speaker Notes: Version 2 is the new format in Docker Compose 1.6. However, version 1 format is still supported. You are still likely to encounter many compose files that are written in the v1 format.</p></aside>
                 </section>
                 
                 

@@ -1,0 +1,115 @@
+                <section data-background="#445d6e" class="gray_bg">
+					<h2><img src="images/icon_lecture.png" class="slide_icon" alt="icon"> Mini lecture: UCP access control</h2>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>User default permissions</h2> 
+                        <ul>
+                            <li>Controls what users can do with resources such as volumes, images and networks and containers</li>
+                            <li style="margin-top: 10px;">Four possible permissions</li>
+                                <ul>
+                                    <li>No access</li>
+                                    <li>View only</li>
+                                    <li>Restricted control</li>
+                                    <li>Full control</li>
+                                </ul>
+                            <li style="margin-top: 10px;">Further role based access control  (RBAC) to containers via team permissions</li>
+                    </ul>
+                </section>    
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Role based access control</h2> 
+                        <ul>
+                            <li>Defined via team permissions</li>
+                            <li> a label and apply a permission to that label</li>
+                            <li style="margin-top: 10px;">Four possible permissions</li>
+                                <ul>
+                                    <li>No access</li>
+                                    <li>View only</li>
+                                    <li>Restricted control</li>
+                                    <li>Full control</li>
+                                </ul>
+                            <li style="margin-top: 10px;">Access control is applied to containers by applying a particular label</li>
+						</ul>
+                </section> 
+                 
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Adding a label</h2> 
+                    <img src="images/add_label.png" alt="add label" style="width: 966px !important; max-width: 100%;">
+                </section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Deploying containers with labels</h2> 
+                    <div class="half_container_one">
+                        <ul>
+                            <li>Specify the label on the "Permissions Label" field</li>
+                            <li>Teams using that label in their permissions will be granted access to the container based on the permission associated with that label</li>
+                            <li>Can specify multiple labels</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="half_container_two" style="text-align: right;"><img src="images/deploying_containers.png" alt="create a user"></div>
+                    
+                    <ul>
+                    	<li>Users must deploy a container using a label that has the "Restricted Access" or "Full Control" permission</li>
+                    	<li style="margin-top: 10px;">Containers can be deployed without a label if the user's default permission is "Restricted Access" or "Full Control"</li>
+                        	<ul>
+                                <li>Container will only be visible to the user who deployed it</li>
+                            </ul>
+                    	<li style="margin-top: 10px;">Users will only see containers with labels they have access to</li>
+                    </ul>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Team permissions</h2>
+                    <ul>
+                    	<li>Different teams can have the same labels in their permissions</li>
+                    	<li style="margin-top: 10px;"><strong>Example</strong></li>
+                        	<ul>
+                                <li>"Engineering" team has "production" label mapped to "View Only" permission</li>
+                                <li>"Ops" team has "production" label mapped to "Full Control" permission</li>
+                            </ul>
+                    	<li style="margin-top: 10px;">Access level for users in multiple teams?</li>
+                    </ul>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Restricted control</h2>
+                    <ul>
+                    	<li>Similar to Full control but with a few key restrictions</li>
+                    	<li>Allows users to create, restart, kill or remove containers</li>
+                    	<li>Does not give permission to <code>docker exec</code> into a container</li>
+                    	<li style="margin-top: 10px;">Also prevents running:</li>
+                        	<ul>
+                                <li>Privileged containers</li>
+                                <li>Host mounted volumes</li>
+                            </ul>
+                    </ul>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Configuring role based access</h2>
+                    <ul>
+                    	<li>Identify one or more labels to apply to containers</li>
+                    	<li>Create one or more teams</li>
+                    	<li>Define a permission by combining a pre-identified label with a specific permission value (i.e. view only)</li>
+                    	<li>Add users to the team</li>
+                    	<li>Ensure container creators use the pre-defined labels</li>
+                    </ul>
+				</section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>Admin users</h2>
+                    <ul>
+                    	<li>Are authorized to access all Docker objects in UCP</li>
+                    	<li>Access either through GUI or client bundle</li>
+                    </ul>
+                    <img src="images/admin_users.png" alt="admin user">
+				</section>

@@ -1,0 +1,150 @@
+                <section data-background="images/title_slide_lesson_2.jpg" class="blue_bg">
+					<h2>Docker Datacenter Training 3 - UCP User Management and Troubleshooting</h2>
+					<aside class="notes"><h3>Speaker Notes: In this second course in the Docker CaaS training series you will learn</h3>
+					<ul>
+                        <li>How to deploy a variety of Dockerized applications</li>
+                        <li>Manage images, containers, and networking</li>
+                        <li>Monitoring best practices</li>
+                        <li>Understand the fundamentals of Swarm</li>
+                    </ul></aside>
+				</section>   
+				
+				<!--
+				<section data-background="#1AAAF8" class="blue_bg">
+					<h2>Intro to Instructor</h2> 
+                    <div class="half_container_one">
+                    <h3>Johnny Tu</h3>
+                        <ul>
+                            <li>6+ years as software instructor / curriculum developer</li>
+                            <li>Support Engineer and Consultant</li>
+                            <li>Atlassian JIRA, Confluence, Bamboo, Bitbucket</li>
+                            <li>Zendesk, GoodData, NGINX</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="half_container_two" style="background-image: url(images/profile_johnny.png); background-size: cover; background-position: bottom left; height: 250px;">
+                    </div>
+				</section>
+				-->
+				
+				<section data-background="#1AAAF8" class="blue_bg">
+					<h2>Intro to Instructor</h2>   
+                    <p>Insert Pic Here</p>
+				</section>
+                
+                
+                
+                <section data-background="#1AAAF8" class="blue_bg">
+					<h2>A Note on Pedagogy</h2>
+                    <ul>
+                        <li>Docker believes in learning by doing, with support.</li>   
+                        <li>Passing the course: 70+ on final assessment.</li>
+                    </ul>		
+					<img src="images/4cid.png" style="background: none !important; width: 60%;">				
+                    <aside class="notes">Speaker Notes: In this course you will be challenged to complete a series of learning tasks upfront, but will be supported by content and the help from the instructor.  You may listen to a mini-lecture that will supplement the task, but emphasis will be completing the tasks.  You will be able to see how much you've learned through taking our pre and post assessments.</aside>
+				</section>
+                
+                
+                
+                <section data-background="#1AAAF8" class="blue_bg">
+					<h2>Session logistics</h2>
+                    <ul>
+                        <li>4 hours duration</li>   
+                        <li>80% lab exercises, 20% lecture</li>
+                        <li style="margin-bottom: 20px;">Short break every hour</li>
+                        <li><b>GoToTraining audio options</b></li> 
+                            <ul>
+                                <li>Phone conference - number is displayed on GTT application</li>   
+                                <li>Mic and Speakers - Please use headset</li>
+                            </ul>
+                        <li style="margin-top: 20px;"><b>Ask questions at anytime</b></li> 
+                            <ul>
+                                <li>Unmute yourself and ask</li>   
+                                <li>Post in chat window</li>
+                            </ul>
+                    </ul>
+				</section>
+                
+                
+                
+                <section data-background="#1AAAF8" class="blue_bg">
+					<h2>Assumed knowledge</h2>
+                    <ul>
+                        <li><b>You should have completed</b></li> 
+                            <ul>
+                                <li>Deploying Docker Datacenter for Evaluation and Production</li>   
+                                <li>Managing Container Services with UCP</li>
+                            </ul>
+                            
+                        <li style="margin-top: 20px;"><b>You should know how to</b></li> 
+                            <ul>
+                                <li>Install UCP on a production environment</li>   
+                                <li>Run a container in UCP</li>
+                                <li>Install the client bundle</li>   
+                                <li>Launch applications using the client bundle</li>
+                                <li>Use Docker Toolbox on their local PC or Mac</li>
+                            </ul>
+                    </ul>
+				</section>
+                
+                
+                
+                <section data-background="#1AAAF8" class="blue_bg">
+					<h2>Your lab environment</h2>
+                    <ul>
+                        <li><b>You have been given three AWS instances with UCP pre-installed</b></li> 
+                            <ul>
+                                <li>ucp-controller</li>   
+                                <li>ucp-node0</li>   
+                                <li>ucp-node1</li>
+                            </ul>
+						<li>You also have 1 AWS node with an LDAP server pre-installed </li>
+                        <li style="margin-top: 20px;"><b>Credentials and access key have been emailed</b></li>
+                    </ul>
+				</section>
+
+                
+                <section data-background="#1AAAF8" class="blue_bg">
+                        <h2>Agenda</h2>
+                        <ul>
+                            <li>Introduction</li>
+                            <li>Pre-assessment</li>
+                            <li>Docker Primer + Access Course Content</li>
+                            <li>Task: Create Users and Teams</li>
+                            <li>Mini Lecture: User Management</li>
+                            <li>Task: Test User Access</li>
+                            <li>Mini Lecture: UCP Access Control</li>
+                            <li>Task: Advanced User Management</li>
+                            <li>Task: User Management with LDAP</li>
+                            <li>Task: Troubleshooting Lab - Password recovery</li>
+                            <li>Task: Troubleshooting lab - User Access</li>
+                            <li>Mini Lecture - Monitoring and Recovery of UCP and applications</li>
+                            <li>Task: Node Recovery</li>
+                            <li>Post Assessment</li>
+                            <li>Questions and Discussion with Instructor</li>
+                        </ul>
+				</section>
+                
+                
+                <section data-background="#1AAAF8" class="blue_bg">
+					<h2>Pre-assessment</h2>   
+                    <p>Go to <a href="https://trueability.com/docker">https://trueability.com/docker</a></p>
+					<ul>
+						<li>Click on Redeem Invite</li>
+						<li>Sign up for an account or login to your existing account</li>
+						<li>Use your assessment code to redeem an assessment</li>
+					</ul>
+					<p><b>Note: </b>Instructor will provide assessment code</p>
+				</section>
+                
+                
+                <section data-background="#1AAAF8" class="blue_bg">
+                        <h2>Get your course content</h2>
+                        <ul>
+                            <li>Slides are powered by Reveal.js</li>
+                            <li>Run inside Docker container</li>
+                        </ul>
+					<pre>
+docker run -ti --rm -v /var/run/docker.sock:/var/run/docker.sock training/docker-present -p 8080</pre>
+                    
+				</section>

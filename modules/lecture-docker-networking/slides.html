@@ -1,114 +1,173 @@
-				<section data-background="#173432">
-					<h2><span class="accent_text_color">Mini Lecture:</span> Docker Networking</h2>
+                <section data-background="#445d6e" class="gray_bg">
+					<h2><img src="images/icon_lecture.png" class="slide_icon" alt="icon"> Mini Lecture: Docker Networking</h2>
 				</section>
                 
-                <section>
-                	<section>
-                        <h2>Default Networks</h2>
-                        <li>Docker comes with three networks automatically setup</li>
-                        <li>View the networks by using the docker network ls command</li>
-                    </section>
-                    <section>
-                        <li>The bridge network is the docker0 bridge</li>
-                        <li>By default all containers are connected to the bridge network</li> 
-                        <p>[insert with syntax highlighting]</p>           
-                    <section data-markdown>
-						<script type="text/template">
-                        ```
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+                	<h2>Default Networks</h2>
+                	<ul>
+                    	<li>Docker comes with three networks automatically setup</li>
+                    	<li>View the networks by using the <code>docker network ls</code> command</li>
+                	</ul>
+                </section>
+                
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+                	<ul>
+                    	<li>The bridge network is the <code>docker0</code> bridge</li>
+                    	<li>By default all containers are connected to the bridge network</li>          
+                	</ul>
+					<pre>
 student@dockerhost:~$ docker network ls
 NETWORK ID          NAME                DRIVER
 d1dc8ce401a4        bridge              bridge
 123297c4b101        none                null
-ec95beed1ab7        host                host
-                        ```
-                        </script>
-					</section>   
-                    </section> 
-				</section>
+ec95beed1ab7        host                host</pre>
+				</section> 
                 
-                <section>
-                	<section>
-                        <h2>Networking diagram</h2>
-                        <p><img src="images/Networking diagram.PNG"></p>
-                    </section>
-                    <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+                 	<h2>Networking diagram</h2>
+					<p><img src="images/Networking diagram.PNG" alt="Networking diagram"></p>
+                
                     <aside class="notes">
                         <h3>Speaker Notes:</h3>
-                        <li>The docker0 interface is a virtual Ethernet bridge interface</li><br>
-                        <li>It passes or switches packets between two connected devices just like a physical bridge or switch</li>
+                        <ul>
+                            <li>The docker0 interface is a virtual Ethernet bridge interface</li><br>
+                            <li>It passes or switches packets between two connected devices just like a physical bridge or switch</li>
+                        </ul>
                         <div style="width: 100%; overflow: hidden;">
-                        <div class="half_container_one"><div class="table_cell">Host to container</div></div>
-                        <div class="half_container_two"><div class="table_cell">Container to container</div></div></div><br>
-                        <li>Each new container gets one interface that is automatically attached to the docker0 bridge</li>
+                            <div class="half_container_one"><div class="table_cell"><p>Host to container</p></div></div>
+                            <div class="half_container_two"><div class="table_cell"><p>Container to container</p></div></div>
+                        </div>
+                        <ul>
+                        	<li>Each new container gets one interface that is automatically attached to the docker0 bridge</li>
+                        </ul>
                     </aside>
-                    </section>
-				</section>
+                </section>
                 
-                <section>
-                	<section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Creating your own network</h2>
-                    <li>We can setup our own network for running our containers</li><br>
-                    <li>Two types of networks we can create</li>
+                    <ul>
+                        <li>We can setup our own network for running our containers</li>
+                        <li>Two types of networks we can create</li>
+                    </ul>
                     <div style="width: 100%; overflow: hidden;">
-                    <div class="half_container_one"><div class="table_cell">Bridge</div></div>
-                    <div class="half_container_two"><div class="table_cell">Overlay</div></div></div>
-                    </section>
+                        <div class="half_container_one"><div class="cell"><p>Bridge</p></div></div>
+                        <div class="half_container_two"><div class="cell"><p>Overlay</p></div></div>
+                    </div>
+                </section>
                     
-                    <section>
-                    <li>A bridge network is very similar to the docker0 network (the default bridge network we’ve seen)</li><br>
-                    <li>An Overlay network can span across multiple hosts</li>
-                    <div class="table_cell">Also known as a multi-host network</div>
-                    </section>
+                    
+                    
+                <section data-background="#445d6e" class="gray_bg">
+                    <ul>
+                        <li>A bridge network is very similar to the <code>docker0</code> network (the default bridge network we’ve seen)</li>
+                        <li>An Overlay network can span across multiple hosts</li>
+                    </ul>
+                    <div class="cell"><p>Also known as a multi-host network</p></div>
+                </section>
+                
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
+				
+					<section>
+						<h2>Bridge Network</h2>
+						<ul>
+							<li>Containers must reside on the same host</li>
+							<li>Containers in user defined bridge network can communicate with each other using their IP address and container name</li>
+							<li>Docker 1.10 ships with an embedded DNS server to resolve container names to IP addresses</li>
+						</ul>
+					</section>
+					
+					<section>
+						<p><img src="images/bridge_network.PNG"/></p>
+					</section>
 				</section>
                 
                 
-                <section>
-					<h2>Bridge Network</h2>
-                    <li>Containers must reside on the same host</li>
-                    <li>Containers in user defined bridge network can communicate with each other using their IP address and container name</li>
-                    <li>Docker 1.10 ships with an embedded DNS server to resolve container names to IP addresses</li>
-                    <p>[insert image: bridge network.png]</p>
-				</section>
                 
-                <section>
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Multi-host networking</h2>
-                    <p>[Need to create new diagram for this, showing the UCP components as well]</p>
+                    <p><img src="images/multi_host_network.PNG"/></p>
 				</section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Docker Compose and networking</h2>
-                    <li>Networking is supported in v2 Compose files</li>
-                    <li>By default Compose creates a bridge network for your application and runs all the containers defined by the services in your configuration file in that network</li>
-                    <li>Network name is the name of the project folder or it can be defined in the Compose file</li>
+                    <ul>
+                        <li>Networking is supported in v2 Compose files</li>
+                        <li>By default Compose creates a bridge network for your application and runs all the containers defined by the services in your configuration file in that network</li>
+                        <li>Network name is the name of the project folder or it can be defined in the Compose file</li>
+                    </ul>
 				</section>
                 
                 
-                <section>
-                	<section>
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Compose and overlay networks</h2>
-                    <li>Applications can consists of many containers</li>
-                    <li>Running all containers on the same host is not effective use of resources</li>
-                    </section>
+                    <ul>
+                        <li>Applications can consists of many containers</li>
+                        <li>Running all containers on the same host is not effective use of resources</li>
+                    </ul>
+                </section>
+                  
+                  
                     
-                    <section>
-                    <li>Compose can be configured to use the overlay driver</li><br>
+                <section data-background="#445d6e" class="gray_bg">
+                    <ul>
+                    	<li>Compose can be configured to use the overlay driver</li><br>
+                    </ul>
                     <div style="width: 100%; overflow: hidden;">
-                    <div class="table_cell">Containers will run on different nodes</div>
-                    <div class="table_cell">Compose will automatically create an overlay network across your nodes</div></div>
-                    </section>
+                        <div class="cell"><p>Containers will run on different nodes</p></div>
+                        <div class="cell"><p>Compose will automatically create an overlay network across your nodes</p></div>
+                    </div>
+                </section>
                     
-                    <section>
-                    <li>Nodes must be connected to a key/value store service such as etcd or consult</li><br>
-                    <div class="table_cell">UCP installation uses etcd</div>
-                    </section>
-				</section>
+                    
+                    
+                <section data-background="#445d6e" class="gray_bg">
+                    <ul>
+                    	<li>Nodes must be connected to a key/value store service such as <code>etcd</code> or <code>consul</code></li><br>
+                    </ul>
+                    <div class="cell"><p>UCP installation uses <code>etcd</code></p></div>
+                </section>
                 
-                <section>
+                
+                
+                <section data-background="#445d6e" class="gray_bg">
 					<h2>Compose and Swarm</h2>
-                    <li>When a Compose application is run against Swarm, it will create an overlay network for the application by default</li>
-                    <li>Swarm will schedule the application containers across different nodes</li>
-                    <li>Network creation will fail if your nodes are not connected to a key/value store </li>
-                    <li>This behaviour was observed in Task 5</li>
-				</section>
-                
+                    <ul>
+                        <li>When a Compose application is run against Swarm, it will create an overlay network for the application by default</li>
+                        <li>Swarm will schedule the application containers across different nodes</li>
+                        <li>Network creation will fail if your nodes are not connected to a key/value store </li>
+                        <li>This behaviour was observed in Task 5</li>
+					</ul>
+                </section>
+				
+                <section data-background="#445d6e" class="gray_bg">
+					<h2>V1 Compose files</h2>
+                    <ul>
+						<li>Networking is not supported on V1 Compose files</li>
+						<li>When connected to Swarm or UCP, Compose will still create an overlay network for your application but the containers will 
+						not be able to communicate if they are on different nodes</li>
+						<li>Containers with defined links will run on the same node as the linked container</li>
+					</ul>
+					<pre>
+javaclient:
+  image: trainingteam/hello-redis:1.0
+  links:
+    - redis:redisdb
+redis:
+  image: redis
+					</pre>
+					</ul>
+                </section>
                 
