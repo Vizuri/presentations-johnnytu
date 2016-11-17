@@ -1,15 +1,13 @@
+## Platform Security: Isolation via Kernel Namespaces and Control Groups
 
-# Isolation: Kernel Namespaces and Control Groups
+Note:
+ - Platform security, which was our first major pillar of security concerns in Docker, rests largely on managing what processes can access. By keeping things well segmented, we mitigate the risk of malicious action in one container gaining control of other containers or of host system resources.
 
 ---
 
 ## Linux Kernel namespaces
 
-- Provide processes with  their own view of the system
-  - `namespaces` = limits what you can see and use
-  - `cgroup` = limits how much you can user
-
----
+- Core containerization tool that prevents processes from colliding or interfering with each other.
 
 |Namespace|constant |Isolates|
 |-------|:---------------:|:-----|
@@ -22,21 +20,17 @@
 |UTS		|	CLONE_NEWUTS	  |	Hostname and NIS domain name|
 
 Note:
-Man page for namespaces
-
-http://man7.org/linux/man-pages/man7/namespaces.7.html
-
+ - Kernel namespaces are one of the key linux features that makes practical containerization feasible.
+ - allows us to isolate processes, giving them their own PID trees, user ranges, network stacks, mount points etc
+ - [if people don't have a sense of how this stuff works, see PID tree example at https://www.toptal.com/linux/separation-anxiety-isolating-your-system-with-linux-namespaces]
+ -  we'll see this again soon, when we think about uid ranges for containers.
 
 ---
 
 ## Kernel Namespaces for docker container: what containers can see
 
-- The processes within the namespace, have their own isolated instance of the global resource.
-- Namespaces are materialized by pseudo-files in ``/proc/<pid>/ns``
-
-```
-ls -la /proc/<pid>/ns/
-```
+- Namespaces are detailed in ``/proc/<pid>/ns``
+- Each process is in one namespace of each type
 
 ```
 > sudo ls -la /proc/1512/ns                                                                                                 
@@ -51,18 +45,14 @@ lrwxrwxrwx 1 root root 0 Nov  8 04:12 user -> user:[4026531837]
 lrwxrwxrwx 1 root root 0 Nov  8 04:12 uts -> uts:[4026531838]
 ```
 
-- Each process is in one namespace of each type
-
-Note: Behind, Docker creates a set of namespaces and control groups for the container.
-tree of all the namespaced
-isolated view of the host, network namespaces, user namspace
-namespace is segment that container sees.
+Note: 
+Every container lives in its own namespace, or rather set of namespaces, for each of the features listed above.
 
 ---
 
 ## Example using namespaces directly
 
-- Using namespaces API ``unshare()`` to move the calling process to a new namespaces.
+- Using namespaces API `unshare()` to move the calling process to a new namespaces.
 
 - Create a shell process with pid and fs namespaces.
 
@@ -72,39 +62,11 @@ $ sudo unshare -fp --mount-proc
 ```
 ![](images/unshare.png)
 
-Note:
-Man page for namespaces
-http://man7.org/linux/man-pages/man7/namespaces.7.html
-
 ---
 
-## User Namespaces
-- Docker deamon running as a `root`
+## Control Groups
 
-```
-$ ps aux | grep dockerd                                                                                          
-root      1555  0.3  5.0 377460 38660 ?        Ssl  14:42   0:00 /usr/bin/dockerd -H tcp://0.0.0.0:2345 --storage-
-driver=overlay -H unix:///var/run/docker.sock -H fd://                                                            
-```
-
-- Start Docker Container with non root user with ``--user`` flag
-
-```
-> sudo docker run --rm --user 1000:1000 alpine  id                                                                           
-uid=1000 gid=1000
-```
-
-Note:
-- Allows to map `UID/GUID`
-  - UID 0-> 1999 in contianer C1 mapped to UID 10000-11999 on hosts
-  - UID 0->1999 in container C2 is mapped to UID 12000->13999 on host
-  - etc..
-
----
-
-## cgroup: *Control Groups*
-
-Container Resource Metering and limiting
+Container resource metering and limiting for assets like:
 
 - CPU
 - Memory
@@ -112,10 +74,10 @@ Container Resource Metering and limiting
 - Block I/O
 - network (with cooperation from iptables/tc)
 
-
 Note:
-man page for cgroup
-http://man7.org/linux/man-pages/man7/cgroups.7.html
+ - cgroups set resource usage limitations on groups of processes
+ - prevents a container from eating up all your cluster's resources
+ - CPU and cpuset groups, for example, allocate and pin CPU usage.
 
 ---
 
@@ -126,42 +88,36 @@ http://man7.org/linux/man-pages/man7/cgroups.7.html
 - Allows to set weights
 - Can't set CPU time
 
----
-
-## `cpuset` cgroup
-- Pin groups to specific CPU(s)
-- Reserve CPUs for specific apps
-- Avoid Processes bouncing between CPUs
-- Also relevant for NUMA systems
-- Provide extra dials and knobs
+Note:
+For example, the CPU cgroup allows us to manage CPU utilization of processes.
 
 ---
 
-## cgroups example with CPUs:
-
+## Without the CPU cgroup:
 
 Running 4 continers on 4 different CPUs
 
 ![](images/cgroup1.png)
 
+Note:
+Without the influence of cgroups, containers may consume all CPUs on a node.
 
 ---
 
-## cgroups: CPU USAGES
+## With cgroup CPU allocation
 
-- Limit CPU usage, cgroup can assign CPUs to containers.
-
-- ``docker run``
-  - ``--cpu-shares``	CPU shares (relative weight)
-  - ``--cpuset-cpus``	CPUs in which to allow execution (0-3, 0,1)
-  - ``--pids-limit``	Tune container pids limit (set -1 for unlimited)
+- CPU cgroup control is exposed by a few docker run flags:
+  - `--cpu-shares`	CPU shares (relative weight)
+  - `--cpuset-cpus`	CPUs in which to allow execution (0-3, 0,1)
+  - `--pids-limit`	Tune container pids limit (set -1 for unlimited)
 
 ![](images/cgroup2.png)
 
-Note: Example using limit CPU usage, cgroup can assign CPUs to containers one.
-Other example would be for memory, and PID
+Note:
+Using these flags with docker run invokes cgroups under the hood to limit system resource allocation.
 
 ---
+
 ## Docker Run with ``--cpuset-cpu``
 
 `htop` output using ``--cpuset-cpu`` to 2
@@ -169,38 +125,32 @@ Other example would be for memory, and PID
 ![](images/htop_2cpuset.png)
 
 Note:
-This node has 2 CPUs
+Same idea here.
 
 ---
 
-## cgroups: *fork bump*
+## cgroups: PID Limits
 
-
-Recursively forking and ran out of resources,
-docker pids limits the number that container can create.
+PID limit stops fork bombs from swamping the pid tree.
 
 ![](images/cgroup3.png)
 
-
+Note:
+ - scripting enthusiasts will recognize a bash fork bomb, a cute way to blow up a host's pid tree
 
 ----
 
-## Full container capabilities ``–privileged``
+## Do not Start Docker Container with Full container capabilities `--privileged`
 
-Do not Start Docker Container this way!!!
-
-- lifts all the limitations enforced by the device `cgroup` controller.  
+- lifts all cgroup limitations.  
 - the container can then do almost everything that the host can do.
-- This flag exists to allow special use-cases, like _running Docker within Docker_.
-
-Note: example usage for device:
-http://obrown.io/2016/02/15/privileged-containers.html
+- This flag exists to allow special use-cases, like running Docker within Docker.
 
 ---
 
 ## Hands-On Exercise:
 www.katacoda.com/docker-training/courses/security-course
-- **cgroups** scenario
 
+**cgroups** scenario
 
 ---

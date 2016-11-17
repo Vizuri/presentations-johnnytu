@@ -1,10 +1,17 @@
-# Capabilities
+## Advanced Tooling
+
+Note:
+ - So far, we've seen some of the more core tools, like namespacing, TLS, image scanning and trust, that Docker uses to secure platform, images and access. Docker also employs a few more sophisticated tools for security, both by default and by user configuration.
 
 ---
 
-##  To  be Root or Not to be Root
+## Capabilities
 
-- `Capabilities` breakdown `root` permissions into groups that can be individually allowed or blocked
+---
+
+##  To be Root or Not to be Root
+
+- `Capabilities` break down `root` permissions into groups that can be individually allowed or blocked
 	- Often do not want or need all root permissions
 	- Can reduce attack surface by reducing capabilities
 
@@ -105,10 +112,8 @@ cap_drop:
 
 ---
 
-
 ## Capabilities and Docker
 - No extended attributes in images -> no capabilities elevation normally possible
-
 - Use docker to reduce capabilities
 - Docker can not grant capabilities to non-root users due to some limitations in older kernel versions
 
@@ -140,7 +145,7 @@ docker run --user
 sudo docker run --rm -it alpine chown nobody /
 ```
 
-- Start another new container and drop all capabilities for the containers root account other than the ``CAP_CHOWN`` capability.
+- Start another new container and drop all capabilities for the containers root account other than the `CAP_CHOWN` capability.
 
 ```
 sudo docker run --rm -it --cap-drop ALL --cap-add CHOWN alpine chown nobody /
@@ -152,18 +157,18 @@ sudo docker run --rm -it --cap-drop ALL --cap-add CHOWN alpine chown nobody /
 sudo docker run --rm -it alpine sh -c 'apk add -U libcap; capsh --print'
 ```
 
-Note:  Remember that Docker does not use the "CAP" prefix when addressing capability constants.
+Note:  
+Remember that Docker does not use the "CAP" prefix when addressing capability constants.
 
 
 ---
 
-## What to watch out for
-### CAUTION!!
+## Common mistake: `--privileged`
+
 ```
 $ docker run --privileged
 
 ```
-
 
 - gives *all capabilities* to the container, also lifts limitations from  *device* cgroup
 
@@ -172,13 +177,13 @@ $ docker run --privileged
 
 ## Hands-On Exercise
 www.katacoda.com/docker-training/courses/security-course
-- **capabilities** scenario
 
+**capabilities** scenario
 
 
 ---
 
-# Seccomp
+## Seccomp
 
 ---
 
@@ -188,10 +193,10 @@ www.katacoda.com/docker-training/courses/security-course
 - An application sandboxing mechanism in the Linux kernel
 - Original Seccomp
 On-off feature that disabled all system calls except:
-	- ``exit()``
-	- ``read()``
-	- ``write()``
-	- ``sigreturn()``
+	- `exit()`
+	- `read()`
+	- `write()`
+	- `sigreturn()`
 
 Note: http://man7.org/linux/man-pages/man2/seccomp.2.html
 
@@ -210,7 +215,8 @@ http://man7.org/conf/lpc2015/limiting_kernel_attack_surface_with_seccomp-LPC_201
 
 ---
 
-## Seccomp enabled?
+## Is seccomp enabled?
+
 In the kernel:
 ```
 $ grep SECCOMP /boot/config-$(uname -r)
@@ -272,12 +278,12 @@ Note: https://docs.docker.com/engine/security/seccomp/
 
 ---
 
-## Run without the default seccomp profile
+## Common Mistake: Run without the default seccomp profile
+
 ```
 $ docker run --rm -it --security-opt seccomp=unconfined debian:jessie \
     unshare --map-root-user --user sh -c whoami
-		```
-
+```
 
 ---
 
@@ -318,15 +324,16 @@ write
 
 ```
 
-Note: strace can be used to get a list of all system calls made by a program. It's a very good starting point for writing seccomp policies. Here's an example of how we can list all system calls made by ls:
+Note: 
+strace can be used to get a list of all system calls made by a program. It's a very good starting point for writing seccomp policies. Here's an example of how we can list all system calls made by ls:
 
 
 ---
 
-## Docker seccomp profile DSL(Domain Specific Language)
+## Docker seccomp profile DSL (Domain Specific Language)
 
 - Seccomp policy example:
-	- Docker custom format for our JSON to specify `seccom`p
+	- Docker custom format for our JSON to specify seccomp
 
 ```
 {
@@ -348,12 +355,14 @@ Note: strace can be used to get a list of all system calls made by a program. It
 ```
 
 - Possible actions:
-  - ``SCMP_ACT_KILL, SCMP_ACT_TRAP, SCMP_ACT_ERRNO, SCMP_ACT_ALLOW``
+  - `SCMP_ACT_KILL, SCMP_ACT_TRAP, SCMP_ACT_ERRNO, SCMP_ACT_ALLOW`
 
 ---
 
-## Docker seccomp profile DSL(Domain Specific Language)
+## Docker seccomp profile DSL (Domain Specific Language)
+
 - More complex filters:
+
 ```
 "args": [
   {
@@ -384,8 +393,10 @@ $ sudo ls
 
 ## Hands-On Exercise
 www.katacoda.com/docker-training/courses/security-course
-- **seccomp** scenario
 
+**seccomp** scenario
+
+Note:
 
 ```
 $ docker run --rm -it --security-opt seccomp=default-no-chmod.json alpine chmod 777 /
@@ -395,7 +406,7 @@ chmod: /: Operation not permitted
 
 ---
 
-# Linux Security Modules
+## Linux Security Modules
 
 ---
 
@@ -468,7 +479,8 @@ deny /sys/** rwklx
 ---
 
 ## Deep Dive - AppArmor:
-### Tools for debugging and generating profiles (on Ubuntu)
+
+Tools for debugging and generating profiles (on Ubuntu):
 
 - Install ``apparmor-utils``
 ```
@@ -496,23 +508,20 @@ $ aa-genprof <PATH_TO_BINARY>
 ---
 
 ## Common mistake: disabling profiles
-### CAUTION !!
 
 - SELinux: `setenforce 0` (on daemon)
 	- http://stopdisablingselinux.com/
 
+- AppArmor: `--security-opt apparmor:unconfined` (on docker run)
 
-- AppArmor: ``--security-opt apparmor:unconfined`` (on docker run)
-
-- ``docker run --privileged``
+- `docker run --privileged`
 
 ---
 
 ## Hands-On Exercise
 www.katacoda.com/docker-training/courses/security-course
-- **apparmor** scenario
 
-
+**apparmor** scenario
 
 ---
 
@@ -536,6 +545,7 @@ www.katacoda.com/docker-training/courses/security-course
 
 ## Advanced Topics
 ### Extra for Experts
+
 ---
 
 ## Running your own Notary
@@ -545,6 +555,7 @@ $ git clone https://github.com/docker/notary.git
 $ cd notary
 $ docker-compose up
 ```
+
 ---
 
 ## Notary Delegations
