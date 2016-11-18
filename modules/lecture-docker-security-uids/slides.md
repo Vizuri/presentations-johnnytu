@@ -1,17 +1,24 @@
-# User Management
+## Platform Security: User UID Management
+
+Note:
+One area of isolation and platform security of particular concern is UID management. In a containerized environment, there is only one kernel, which means the spectrum of UIDs in the container is part of the same spectrum of UIDs in the host. This presents a unique attack vector for potentially gaining priveleges on the host.
 
 ---
 
 ## Default runs as root
-
 ```
 $ docker run -v /bin:/host/bin -it --rm alpine sh
 $ whoami
 root
 $ id
 uid=0(root) gid=0(root)
+$ # WREAK HAVOC TIME!  Please don't do this
+$ rm /host/bin/sh # Again, please don't do this
 ```
-- Please **DO NOT** do this
+
+Note:
+ - Recall that there is no VM here; the uid spectrum in the container is part of the host's uid spectrum
+ - running as the host's uid 0, which is the default, runs the risk of a container breakout.
 
 ---
 
@@ -69,9 +76,10 @@ $ docker daemon --userns-remap [uid[:gid]]
 
 ---
 
-## Hands-On Exercise && break
+## Hands-On Exercise
 www.katacoda.com/docker-training/courses/security-course
-- **userns** scenario
+
+**userns** scenario
 
 
 ---
