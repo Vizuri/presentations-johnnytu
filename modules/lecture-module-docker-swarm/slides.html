@@ -55,23 +55,30 @@
 						<li>Notice the Swarm container running the manage command</li>
                     </ul><br>
 <pre>CONTAINER ID		IMAGE					COMMAND                    
-8ee33a41effa		docker/ucp-controller:1.0.0		"/bin/controller serv" 
-462461d4c23a		docker/ucp-cfssl:1.0.0			"/bin/cfssl serve -ad"
-9522ab2ca46c		docker/ucp-cfssl:1.0.0			"/bin/cfssl serve -ad"
-12fbc77d60b5		docker/ucp-swarm:1.0.0			"/swarm manage --tlsv"
-9e38456428e3		docker/ucp-swarm:1.0.0			"/swarm join --discov"
-4350c7be8f66		docker/ucp-proxy:1.0.0			"/bin/run"            
-e9f18dcb802a		docker/ucp-etcd:1.0.0			"/bin/etcd --data-dir"
+f2b501069feb        docker/ucp-controller:1.1.1   "/bin/controller serv" 
+78b01f1f61d8        docker/ucp-auth:1.1.1         "/usr/local/bin/enzi "
+b2f4e544c75b        docker/ucp-auth:1.1.1         "/usr/local/bin/enzi "
+8df87cabc3d2        docker/ucp-auth-store:1.1.1   "/usr/local/bin/rethi"
+0592845937a8        docker/ucp-cfssl:1.1.1        "/bin/cfssl serve -ad"
+0903efdf2072        docker/ucp-cfssl:1.1.1        "/bin/cfssl serve -ad"            
+ba22d568481d        docker/ucp-swarm:1.1.1        "/swarm manage --tlsv"
+75b29f71c0d1        docker/ucp-swarm:1.1.1        "/swarm join --discov"
+423f9a9901ea        docker/ucp-proxy:1.1.1        "/bin/run"   
+c8477fe645b8        docker/ucp-etcd:1.1.1         "/bin/etcd --data-dir" 
 
 
 PORTS                                                                               NAMES
-0.0.0.0:443->8080/tcp                                                               ucp-controller
-8888/tcp, 0.0.0.0:12381->12381/tcp                                                  ucp-cluster-root-ca
-8888/tcp, 0.0.0.0:12382->12382/tcp                                                  ucp-client-root-ca
-0.0.0.0:2376->2375/tcp                                                              ucp-swarm-manager
-2375/tcp                                                                            ucp-swarm-join
-                                                                                    ucp-proxy
-2380/tcp, 4001/tcp, 7001/tcp, 0.0.0.0:12380->12380/tcp, 0.0.0.0:12379->2379/tcp     ucp-kv </pre> 
+0.0.0.0:443->8080/tcp                                                              ucp-controller
+0.0.0.0:12386->4443/tcp                                                            ucp-auth-worker
+0.0.0.0:12385->4443/tcp                                                            ucp-auth-api
+0.0.0.0:12383-12384->12383-12384/tcp                                               ucp-auth-store
+8888/tcp, 0.0.0.0:12381->12381/tcp                                                 ucp-cluster-root-ca
+8888/tcp, 0.0.0.0:12382->12382/tcp                                                 ucp-client-root-ca
+0.0.0.0:2376->2375/tcp                                                             ucp-swarm-manager
+2375/tcp                                                                           ucp-swarm-join
+0.0.0.0:12376->2376/tcp                                                            ucp-proxy
+2380/tcp, 4001/tcp, 7001/tcp, 0.0.0.0:12380->12380/tcp, 0.0.0.0:12379->2379/tcp    ucp-kv
+</pre> 
                     
 				</section>
                 
